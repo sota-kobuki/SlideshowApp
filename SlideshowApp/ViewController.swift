@@ -71,6 +71,9 @@ class ViewController: UIViewController {
     
     @objc func imageTapped() {
         performSegue(withIdentifier: "showDetailSegue", sender: self)
+        if isPlaying {
+            stopSlideshow()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
