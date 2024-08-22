@@ -35,10 +35,10 @@
                                     <action selector="Back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gsQ-OA-siJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ako-Ib-nDY">
-                                <rect key="frame" x="148" y="708" width="97" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ako-Ib-nDY">
+                                <rect key="frame" x="169" y="710" width="56" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="再生/停止"/>
+                                <buttonConfiguration key="configuration" style="plain" title="再生"/>
                                 <connections>
                                     <action selector="startstop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIf-Ui-bgE"/>
                                 </connections>
@@ -61,7 +61,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BackButton" destination="BkD-Sg-SjE" id="W2a-Oq-CB2"/>
                         <outlet property="ImageView" destination="YGH-3e-PGd" id="Wwf-Iy-XZB"/>
+                        <outlet property="NextButton" destination="tZp-gO-bE2" id="Rra-B7-FiD"/>
+                        <outlet property="StartStopButton" destination="Ako-Ib-nDY" id="oC7-U7-NLd"/>
+                        <segue destination="8lS-ze-nBr" kind="presentation" identifier="showDetailSegue" id="XXj-cN-OCx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,16 +77,18 @@
             <objects>
                 <viewController id="8lS-ze-nBr" customClass="DetailViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3ea-w4-XBz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0IY-eU-oUX">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0IY-eU-oUX">
+                                <rect key="frame" x="0.0" y="100" width="393" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="500" id="3GP-C9-JXA"/>
+                                    <constraint firstAttribute="height" constant="500" id="xmE-aA-8uu"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQ6-zi-ctm">
-                                <rect key="frame" x="168" y="718" width="56" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQ6-zi-ctm">
+                                <rect key="frame" x="168.66666666666666" y="707" width="56" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="戻る"/>
                                 <connections>
@@ -92,9 +98,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TDT-D4-5wj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GQ6-zi-ctm" firstAttribute="centerX" secondItem="3ea-w4-XBz" secondAttribute="centerX" id="0pr-kw-0c2"/>
+                            <constraint firstItem="TDT-D4-5wj" firstAttribute="bottom" secondItem="GQ6-zi-ctm" secondAttribute="bottom" constant="100" id="Vuf-vr-MmV"/>
+                            <constraint firstItem="0IY-eU-oUX" firstAttribute="leading" secondItem="TDT-D4-5wj" secondAttribute="leading" id="gDd-WE-b6b"/>
+                            <constraint firstItem="0IY-eU-oUX" firstAttribute="trailing" secondItem="TDT-D4-5wj" secondAttribute="trailing" id="qgR-o3-tVQ"/>
+                            <constraint firstItem="0IY-eU-oUX" firstAttribute="top" secondItem="TDT-D4-5wj" secondAttribute="top" constant="100" id="xBv-o2-3nK"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DYp-fn-YOn"/>
                     <connections>
-                        <outlet property="Image" destination="0IY-eU-oUX" id="BFF-xy-9j7"/>
+                        <outlet property="detailImageView" destination="0IY-eU-oUX" id="vms-6k-3An"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQd-fI-IjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

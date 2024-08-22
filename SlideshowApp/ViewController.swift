@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ImageView: UIImageView!
     
+    @IBOutlet weak var BackButton: UIButton!
+    @IBOutlet weak var NextButton: UIButton!
+    @IBOutlet weak var StartStopButton: UIButton!
+    
     var imageNames = ["photo01.jpg", "photo02.jpg", "photo03.jpg"]
     var currentIndex = 0
     var timer: Timer?
@@ -46,11 +50,17 @@ class ViewController: UIViewController {
     
     func startSlideshow() {
         isPlaying = true
+        StartStopButton.setTitle("停止", for: .normal)
+        NextButton.isEnabled = false
+        BackButton.isEnabled = false
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(showNextImage), userInfo: nil, repeats: true)
     }
     
     func stopSlideshow() {
         isPlaying = false
+        StartStopButton.setTitle("再生", for: .normal)
+        NextButton.isEnabled = true
+        BackButton.isEnabled = true
         timer?.invalidate()
         timer = nil
     }
